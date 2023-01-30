@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-OpenAMServiceFailure">
+    <DisplayName>AM-OpenAMServiceFailure</DisplayName>
+    <Set>
+        <Payload contentType="application/json">{"errorCode":"GTW-ERROR-004", "message":"Internal System Error occurred. Please contact System Administrator."}</Payload>
+        <StatusCode>500</StatusCode>
+        <ReasonPhrase>Internal Server Error</ReasonPhrase>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

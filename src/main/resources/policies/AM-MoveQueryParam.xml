@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-MoveQueryParam">
+    <DisplayName>AM-MoveQueryParam</DisplayName>
+    <Properties/>
+    <Add>
+        <FormParams>
+            <FormParam name="grant_type">{request.queryparam.grant_type}</FormParam>
+            <FormParam name="username">{request.queryparam.username}</FormParam>
+            <FormParam name="password">{request.queryparam.password}</FormParam>
+            <FormParam name="client_id">{request.queryparam.client_id}</FormParam>
+            <FormParam name="client_secret">{request.queryparam.client_secret}</FormParam>
+            <FormParam name="auth_chain">{request.queryparam.auth_chain}</FormParam>
+        </FormParams>
+    </Add>
+    <Remove>
+        <QueryParams>
+            <QueryParam name="grant_type"/>
+            <QueryParam name="username"/>
+            <QueryParam name="password"/>
+            <QueryParam name="client_id"/>
+            <QueryParam name="client_secret"/>
+            <QueryParam name="auth_chain"/>
+        </QueryParams>
+    </Remove>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>
