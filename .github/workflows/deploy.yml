@@ -1,15 +1,32 @@
 name: Deploy
 on:
-  workflow_dispatch:
   push:
     branches:
-      - main
+      - 'main'
+
 jobs:
-  build:
-    name: Run API
-    runs-on: ubuntu-latest
+  conditional_step:
+    runs-on: 'ubuntu-20.04'
     steps:
-      - name: Build API
-        run: |
-          echo "Build API"
-          sleep 10s
+    - name: Checkout resources repo
+      uses: actions/checkout@v2
+      with:
+        ref: main
+        repository: runawaybon/demo-web-app
+        path: ./resources
+        
+    - name: Checkout self repo
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 2
+        path: ./source
+        
+    - uses: actions/setup-java@v3
+      with:
+        distribution: temurin
+        java-version: 8
+    - run: |
+        cd /home/runner/work/demo-web-api/demo-web-api/source/
+        ls
+        pwd
+        mvn compile exec:java -Dsource="/home/runner/work/demo-web-api/demo-web-api/resources/"
